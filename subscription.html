@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription - AI Subscription App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #226797 0%, #073A59 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #226797 0%, #11C5D9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .plan-card {
+            transition: all 0.3s ease;
+        }
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .nav-item {
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover {
+            transform: translateY(-2px);
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .limited-offer {
+            background: linear-gradient(135deg, #F26680 0%, #F27329 100%);
+            animation: pulse 2s infinite;
+        }
+        .feature-highlight {
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-highlight::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(34, 103, 151, 0.1) 0%, rgba(17, 197, 217, 0.1) 100%);
+            z-index: -1;
+        }
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #F26680;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px -1px rgba(242, 102, 128, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部状态栏 -->
+    <div class="h-14 bg-white flex items-center justify-between px-4 border-b border-gray-100">
+        <div class="text-[#226797] font-semibold text-lg">Premium Subscription</div>
+        <div class="flex items-center space-x-6">
+            <i class="fas fa-bell text-[#226797] text-lg"></i>
+            <i class="fas fa-user text-[#226797] text-lg"></i>
+        </div>
+    </div>
+
+    <!-- 主要内容区 -->
+    <div class="p-6">
+        <!-- 限时优惠提示 -->
+        <div class="limited-offer text-white rounded-2xl p-4 mb-6 text-center">
+            <div class="text-sm font-semibold">LIMITED TIME OFFER</div>
+            <div class="text-lg font-bold">Save 40% on Annual Plan</div>
+            <div class="text-xs mt-1">Offer ends in 24 hours</div>
+        </div>
+
+        <!-- 会员特权说明 -->
+        <div class="gradient-bg rounded-2xl p-6 text-white mb-8 shadow-lg relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -mt-16 -mr-16"></div>
+            <div class="absolute bottom-0 left-0 w-24 h-24 bg-white bg-opacity-10 rounded-full -mb-12 -ml-12"></div>
+            <h2 class="text-2xl font-bold mb-4 relative">Unlock Premium Features</h2>
+            <ul class="space-y-3 text-sm relative">
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle mr-3 text-[#11C5D9] text-lg"></i>
+                    <span>Unlimited access to all AI features</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle mr-3 text-[#11C5D9] text-lg"></i>
+                    <span>Early access to new features</span>
+                </li>
+                <li class="flex items-center">
+                    <i class="fas fa-check-circle mr-3 text-[#11C5D9] text-lg"></i>
+                    <span>Priority customer support</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 订阅方案 -->
+        <div class="space-y-6 mb-8">
+            <!-- 包月方案 -->
+            <div class="plan-card bg-white rounded-2xl p-6 shadow-sm">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-xl font-bold text-[#226797]">Monthly Plan</h3>
+                        <p class="text-sm text-gray-500 mt-1">Perfect for short-term use</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-3xl font-bold text-[#226797]">$29</div>
+                        <div class="text-sm text-gray-500">per month</div>
+                    </div>
+                </div>
+                <button class="w-full mt-6 bg-[#226797] text-white py-4 rounded-xl font-semibold hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">
+                    Subscribe Now
+                </button>
+            </div>
+
+            <!-- 包年方案 -->
+            <div class="plan-card bg-white rounded-2xl p-6 shadow-sm border-2 border-[#226797] relative">
+                <div class="popular-badge">MOST POPULAR</div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="flex items-center">
+                            <h3 class="text-xl font-bold text-[#226797]">Annual Plan</h3>
+                            <span class="ml-3 bg-[#226797] bg-opacity-10 text-[#226797] text-xs px-3 py-1 rounded-full font-semibold">Best Value</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-1">Save 40% compared to monthly</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-3xl font-bold text-[#226797]">$299</div>
+                        <div class="text-sm text-gray-500">per year</div>
+                    </div>
+                </div>
+                <button class="w-full mt-6 bg-[#226797] text-white py-4 rounded-xl font-semibold hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">
+                    Subscribe Now
+                </button>
+            </div>
+        </div>
+
+        <!-- 会员功能展示 -->
+        <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="feature-card feature-highlight bg-white rounded-2xl p-4 shadow-sm">
+                <div class="w-12 h-12 bg-[#226797] bg-opacity-10 rounded-xl flex items-center justify-center mb-3">
+                    <i class="fas fa-robot text-[#226797] text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800">AI Writing</h3>
+                <p class="text-xs text-gray-500 mt-1">Create any content</p>
+            </div>
+            <div class="feature-card feature-highlight bg-white rounded-2xl p-4 shadow-sm">
+                <div class="w-12 h-12 bg-[#F26680] bg-opacity-10 rounded-xl flex items-center justify-center mb-3">
+                    <i class="fas fa-image text-[#F26680] text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800">AI Art</h3>
+                <p class="text-xs text-gray-500 mt-1">Generate images</p>
+            </div>
+            <div class="feature-card feature-highlight bg-white rounded-2xl p-4 shadow-sm">
+                <div class="w-12 h-12 bg-[#11C5D9] bg-opacity-10 rounded-xl flex items-center justify-center mb-3">
+                    <i class="fas fa-comments text-[#11C5D9] text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800">AI Chat</h3>
+                <p class="text-xs text-gray-500 mt-1">Smart assistant</p>
+            </div>
+            <div class="feature-card feature-highlight bg-white rounded-2xl p-4 shadow-sm">
+                <div class="w-12 h-12 bg-[#F27329] bg-opacity-10 rounded-xl flex items-center justify-center mb-3">
+                    <i class="fas fa-code text-[#F27329] text-xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800">AI Coding</h3>
+                <p class="text-xs text-gray-500 mt-1">Code generation</p>
+            </div>
+        </div>
+
+        <!-- 用户评价 -->
+        <div class="mt-8">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">What Our Users Say</h3>
+            <div class="space-y-4">
+                <div class="bg-white rounded-2xl p-4 shadow-sm">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-gray-200 rounded-full mr-3"></div>
+                        <div>
+                            <div class="font-semibold text-gray-800">John D.</div>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">"The AI features are amazing! Worth every penny of the subscription."</p>
+                </div>
+                <div class="bg-white rounded-2xl p-4 shadow-sm">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 bg-gray-200 rounded-full mr-3"></div>
+                        <div>
+                            <div class="font-semibold text-gray-800">Sarah M.</div>
+                            <div class="flex text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">"The annual plan saved me so much money. Best decision ever!"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 支付说明 -->
+        <div class="mt-8 text-center text-sm text-gray-500">
+            <p>By subscribing, you agree to our Terms of Service</p>
+            <p class="mt-2">Secure payment with Apple Pay, Google Pay, and credit cards</p>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100">
+        <div class="flex justify-around py-4">
+            <a href="home.html" class="nav-item flex flex-col items-center text-gray-500">
+                <i class="fas fa-home text-xl"></i>
+                <span class="text-xs mt-1 font-medium">Home</span>
+            </a>
+            <a href="subscription.html" class="nav-item flex flex-col items-center text-[#226797]">
+                <i class="fas fa-crown text-xl"></i>
+                <span class="text-xs mt-1 font-medium">Premium</span>
+            </a>
+            <a href="profile.html" class="nav-item flex flex-col items-center text-gray-500">
+                <i class="fas fa-user text-xl"></i>
+                <span class="text-xs mt-1 font-medium">Profile</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html> 
