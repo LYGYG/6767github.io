@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>播放设置 - 相册工具</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .status-bar {
+            height: 44px;
+        }
+        .bottom-nav {
+            height: 83px;
+        }
+        .album-card {
+            transition: transform 0.2s;
+        }
+        .album-card:active {
+            transform: scale(0.98);
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 52px;
+            height: 32px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #3b82f6;
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen">
+    <!-- 状态栏 -->
+    <div class="status-bar bg-white flex items-center justify-between px-5 pt-2">
+        <div class="text-sm">9:41</div>
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- 头部 -->
+    <div class="bg-white pt-4 pb-4 px-5 shadow-sm flex items-center">
+        <a href="home.html" class="mr-4">
+            <i class="fas fa-chevron-left text-gray-600"></i>
+        </a>
+        <h1 class="text-xl font-bold flex-1">播放设置</h1>
+        <button class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+            <i class="fas fa-cog text-gray-600"></i>
+        </button>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="flex-1 overflow-auto">
+        <!-- 播放控制卡片 -->
+        <div class="bg-white m-4 rounded-xl shadow-sm overflow-hidden">
+            <div class="p-4 bg-blue-50">
+                <div class="flex justify-between items-center mb-2">
+                    <h2 class="text-lg font-bold text-blue-900">播放控制</h2>
+                    <button class="px-4 py-1.5 bg-blue-500 text-white text-sm rounded-full">
+                        开始播放
+                    </button>
+                </div>
+                <p class="text-sm text-blue-800">设置照片播放方式和时间间隔</p>
+            </div>
+            
+            <div class="p-4">
+                <!-- 播放模式 -->
+                <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                    <div class="flex items-center">
+                        <i class="fas fa-random text-gray-400 w-6"></i>
+                        <span class="ml-2">随机播放</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <!-- 循环播放 -->
+                <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                    <div class="flex items-center">
+                        <i class="fas fa-redo-alt text-gray-400 w-6"></i>
+                        <span class="ml-2">循环播放</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <!-- 切换时间 -->
+                <div class="flex justify-between items-center py-3">
+                    <div class="flex items-center">
+                        <i class="fas fa-clock text-gray-400 w-6"></i>
+                        <span class="ml-2">切换时间</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-gray-500 text-sm mr-2">5秒</span>
+                        <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 选择播放相册 -->
+        <div class="px-4 mt-4 mb-2">
+            <div class="flex justify-between items-center">
+                <h2 class="text-lg font-bold">选择播放相册</h2>
+                <button class="text-sm text-blue-500">全选</button>
+            </div>
+            <p class="text-sm text-gray-500 mt-1">选择您想要在幻灯片中播放的相册</p>
+        </div>
+        
+        <!-- 相册列表 -->
+        <div class="px-4">
+            <!-- 相册1 -->
+            <div class="flex items-center bg-white rounded-xl p-3 mb-3 shadow-sm">
+                <div class="w-14 h-14 bg-blue-100 rounded-xl overflow-hidden mr-4">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="自然风光" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-medium">自然风光</h3>
+                    <p class="text-sm text-gray-500">36张照片</p>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <!-- 相册2 -->
+            <div class="flex items-center bg-white rounded-xl p-3 mb-3 shadow-sm">
+                <div class="w-14 h-14 bg-blue-100 rounded-xl overflow-hidden mr-4">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552" alt="家庭聚会" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-medium">家庭聚会</h3>
+                    <p class="text-sm text-gray-500">24张照片</p>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <!-- 相册3 -->
+            <div class="flex items-center bg-white rounded-xl p-3 mb-3 shadow-sm">
+                <div class="w-14 h-14 bg-blue-100 rounded-xl overflow-hidden mr-4">
+                    <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929" alt="美食记录" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-medium">美食记录</h3>
+                    <p class="text-sm text-gray-500">18张照片</p>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <!-- 相册4 -->
+            <div class="flex items-center bg-white rounded-xl p-3 mb-3 shadow-sm">
+                <div class="w-14 h-14 bg-blue-100 rounded-xl overflow-hidden mr-4">
+                    <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9" alt="旅行足迹" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-medium">旅行足迹</h3>
+                    <p class="text-sm text-gray-500">42张照片</p>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <!-- 相册5 -->
+            <div class="flex items-center bg-white rounded-xl p-3 mb-3 shadow-sm">
+                <div class="w-14 h-14 bg-blue-100 rounded-xl overflow-hidden mr-4">
+                    <img src="https://images.unsplash.com/photo-1520962922320-2038eebab146" alt="城市风光" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <h3 class="font-medium">城市风光</h3>
+                    <p class="text-sm text-gray-500">29张照片</p>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        
+        <!-- 高级设置 -->
+        <div class="bg-white m-4 rounded-xl shadow-sm overflow-hidden mt-6">
+            <h2 class="text-lg font-bold p-4 border-b border-gray-100">高级设置</h2>
+            
+            <div class="p-4">
+                <!-- 屏幕常亮 -->
+                <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                    <div class="flex items-center">
+                        <i class="fas fa-lightbulb text-gray-400 w-6"></i>
+                        <span class="ml-2">屏幕常亮</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <!-- 背景音乐 -->
+                <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                    <div class="flex items-center">
+                        <i class="fas fa-music text-gray-400 w-6"></i>
+                        <span class="ml-2">背景音乐</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-gray-500 text-sm mr-2">无</span>
+                        <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                    </div>
+                </div>
+                
+                <!-- 过渡效果 -->
+                <div class="flex justify-between items-center py-3">
+                    <div class="flex items-center">
+                        <i class="fas fa-magic text-gray-400 w-6"></i>
+                        <span class="ml-2">过渡效果</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-gray-500 text-sm mr-2">淡入淡出</span>
+                        <i class="fas fa-chevron-right text-gray-400 text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <div class="bottom-nav bg-white px-5 pt-4 pb-8 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+        <div class="flex justify-around">
+            <a href="home.html" class="flex flex-col items-center">
+                <div class="w-6 h-6 flex items-center justify-center mb-1">
+                    <i class="fas fa-home text-gray-400 text-xl"></i>
+                </div>
+                <span class="text-xs text-gray-400">首页</span>
+            </a>
+            <a href="albums.html" class="flex flex-col items-center">
+                <div class="w-6 h-6 flex items-center justify-center mb-1">
+                    <i class="fas fa-images text-gray-400 text-xl"></i>
+                </div>
+                <span class="text-xs text-gray-400">相册</span>
+            </a>
+            <a href="playback_settings.html" class="flex flex-col items-center">
+                <div class="w-6 h-6 flex items-center justify-center mb-1">
+                    <i class="fas fa-play-circle text-blue-500 text-xl"></i>
+                </div>
+                <span class="text-xs text-blue-500">播放</span>
+            </a>
+            <a href="#" class="flex flex-col items-center">
+                <div class="w-6 h-6 flex items-center justify-center mb-1">
+                    <i class="fas fa-user text-gray-400 text-xl"></i>
+                </div>
+                <span class="text-xs text-gray-400">我的</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html> 

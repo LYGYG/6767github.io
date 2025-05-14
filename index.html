@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>相册工具APP原型</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+        .prototype-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
+            gap: 30px;
+            margin: 0 auto;
+            max-width: 1600px;
+        }
+        .frame-container {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background: white;
+            position: relative;
+        }
+        .frame-title {
+            position: absolute;
+            top: -30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
+        iframe {
+            border: none;
+            width: 375px;
+            height: 812px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-3xl font-bold text-center mb-8">相册工具APP原型图</h1>
+    
+    <div class="prototype-container">
+        <div class="frame-container">
+            <div class="frame-title">首页</div>
+            <iframe src="home.html"></iframe>
+        </div>
+        
+        <div class="frame-container">
+            <div class="frame-title">相册列表</div>
+            <iframe src="albums.html"></iframe>
+        </div>
+        
+        <div class="frame-container">
+            <div class="frame-title">相册详情</div>
+            <iframe src="album_detail.html"></iframe>
+        </div>
+        
+        <div class="frame-container">
+            <div class="frame-title">照片上传</div>
+            <iframe src="upload.html"></iframe>
+        </div>
+        
+        <div class="frame-container">
+            <div class="frame-title">播放设置</div>
+            <iframe src="playback_settings.html"></iframe>
+        </div>
+        
+        <div class="frame-container">
+            <div class="frame-title">照片播放</div>
+            <iframe src="slideshow.html"></iframe>
+        </div>
+    </div>
+</body>
+</html> 

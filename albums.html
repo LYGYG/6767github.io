@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albums - Photo Album</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .status-bar {
+            height: 44px;
+        }
+        .bottom-nav {
+            height: 83px;
+        }
+        .album-card {
+            transition: transform 0.2s;
+        }
+        .album-card:active {
+            transform: scale(0.98);
+        }
+        .fab {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen">
+    <!-- Status bar -->
+    <div class="status-bar bg-white flex items-center justify-between px-5 pt-2">
+        <div class="text-sm">9:41</div>
+        <div class="flex items-center space-x-2">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="bg-white pt-4 pb-4 px-5 shadow-sm flex items-center">
+        <h1 class="text-xl font-bold flex-1">All Albums</h1>
+        <div class="flex space-x-3">
+            <button class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                <i class="fas fa-search text-gray-600"></i>
+            </button>
+            <button class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                <i class="fas fa-ellipsis-v text-gray-600"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Album categories -->
+    <div class="bg-white px-5 py-3 border-b border-gray-100">
+        <div class="flex space-x-4">
+            <button class="px-4 py-2 bg-blue-500 text-white text-sm rounded-full">
+                All
+            </button>
+            <button class="px-4 py-2 bg-gray-100 text-gray-600 text-sm rounded-full">
+                Recent
+            </button>
+            <button class="px-4 py-2 bg-gray-100 text-gray-600 text-sm rounded-full">
+                Favorites
+            </button>
+            <button class="px-4 py-2 bg-gray-100 text-gray-600 text-sm rounded-full">
+                Shared
+            </button>
+        </div>
+    </div>
+
+    <!-- Main content area -->
+    <div class="flex-1 overflow-auto p-5">
+        <!-- Album grid -->
+        <div class="grid grid-cols-2 gap-4">
+            <!-- Album 1 -->
+            <a href="album_detail.html" class="album-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative h-36">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Nature" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                        <div class="text-white font-medium">Nature</div>
+                        <div class="text-white/80 text-xs">36 photos</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Album 2 -->
+            <a href="album_detail.html" class="album-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative h-36">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552" alt="Family Gathering" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                        <div class="text-white font-medium">Family Gathering</div>
+                        <div class="text-white/80 text-xs">24 photos</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Album 3 -->
+            <a href="album_detail.html" class="album-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative h-36">
+                    <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929" alt="Food Collection" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                        <div class="text-white font-medium">Food Collection</div>
+                        <div class="text-white/80 text-xs">18 photos</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Album 4 -->
+            <a href="album_detail.html" class="album-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative h-36">
+                    <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9" alt="Travel Footprints" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                        <div class="text-white font-medium">Travel Footprints</div>
+                        <div class="text-white/80 text-xs">42 photos</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Album 5 -->
+            <a href="album_detail.html" class="album-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative h-36">
+                    <img src="https://images.unsplash.com/photo-1520962922320-2038eebab146" alt="Urban Views" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                        <div class="text-white font-medium">Urban Views</div>
+                        <div class="text-white/80 text-xs">29 photos</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Album 6 -->
+            <a href="album_detail.html" class="album-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative h-36">
+                    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205" alt="Pets" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                        <div class="text-white font-medium">Pets</div>
+                        <div class="text-white/80 text-xs">15 photos</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Album 7 -->
+            <a href="album_detail.html" class="album-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative h-36">
+                    <img src="https://images.unsplash.com/photo-1471079502516-250c19af6928" alt="Flora" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                        <div class="text-white font-medium">Flora</div>
+                        <div class="text-white/80 text-xs">22 photos</div>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Album 8 -->
+            <a href="album_detail.html" class="album-card bg-white rounded-xl overflow-hidden shadow-sm">
+                <div class="relative h-36">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865" alt="Art" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                        <div class="text-white font-medium">Art</div>
+                        <div class="text-white/80 text-xs">11 photos</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Create new album button -->
+    <div class="fixed right-8 bottom-24">
+        <button class="fab w-14 h-14 rounded-full bg-blue-500 text-white flex items-center justify-center">
+            <i class="fas fa-plus text-xl"></i>
+        </button>
+    </div>
+
+    <!-- Bottom navigation -->
+    <div class="bottom-nav bg-white px-5 pt-4 pb-8 shadow-[0_-2px_10px_rgba(0,0,0,0.05)]">
+        <div class="flex justify-around">
+            <a href="home.html" class="flex flex-col items-center">
+                <div class="w-6 h-6 flex items-center justify-center mb-1">
+                    <i class="fas fa-home text-gray-400 text-xl"></i>
+                </div>
+                <span class="text-xs text-gray-400">Home</span>
+            </a>
+            <a href="albums.html" class="flex flex-col items-center">
+                <div class="w-6 h-6 flex items-center justify-center mb-1">
+                    <i class="fas fa-images text-blue-500 text-xl"></i>
+                </div>
+                <span class="text-xs text-blue-500">Albums</span>
+            </a>
+            <a href="playback_settings.html" class="flex flex-col items-center">
+                <div class="w-6 h-6 flex items-center justify-center mb-1">
+                    <i class="fas fa-play-circle text-gray-400 text-xl"></i>
+                </div>
+                <span class="text-xs text-gray-400">Playback</span>
+            </a>
+            <a href="#" class="flex flex-col items-center">
+                <div class="w-6 h-6 flex items-center justify-center mb-1">
+                    <i class="fas fa-user text-gray-400 text-xl"></i>
+                </div>
+                <span class="text-xs text-gray-400">Profile</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html> 
